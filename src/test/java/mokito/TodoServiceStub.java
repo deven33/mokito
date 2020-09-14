@@ -9,4 +9,9 @@ public class TodoServiceStub implements TodoService{
 		return Arrays.asList("MVC Spring", "Hibernate","Spring Boot");
 	}
 
+	public void todoDelete(String todo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

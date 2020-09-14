@@ -1,6 +1,8 @@
 	package mokito;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -9,7 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class ListTest {
+public class ListArumentMatcherTest {
 
 	// every size() call will return 2
 	@Test
@@ -51,5 +53,19 @@ public class ListTest {
 		List listMock = mock(List.class);
 		when(listMock.get(anyInt())).thenThrow(new RuntimeException("any Exception"));
 		listMock.get(3);
+	}
+	
+	// list using BDD
+	@Test
+	public void testmockListGet_usingBDD() {
+		//Given
+		List<String> listMock = mock(List.class);
+		given(listMock.get(anyInt())).willReturn("dev");
+		
+		//When
+		String firstElemnt = listMock.get(0);
+		
+		//Then
+		assertThat(firstElemnt, is("dev"));
 	}
 }
